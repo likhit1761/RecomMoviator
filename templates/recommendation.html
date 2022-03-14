@@ -8,19 +8,56 @@
           {
             border: 2px solid black;
             padding: 0px;
-            background: url("https://toscon14.files.wordpress.com/2014/05/seminar-presenter-pic.jpg");
+            background-color: aqua;
+            /* background-image: url("{{ url_for('static', filename='recommpic.jpg') }}"); */
+            /* background: url("https://toscon14.files.wordpress.com/2014/05/seminar-presenter-pic.jpg"); */
             background-repeat: no-repeat;
             background-size: 450px 450px; 
             background-position: center center;
             } 
+            #container {
+            width: 420px;
+            height: 420px;
+            }
+
+            #container img {
+            width: 100%;
+            }
         </style>  
     </head>
 
-    <body bgcolor="Lavender">
+    <body>
         {% extends "template.html" %}
         {% block content %}
-            <h1><font color="midnightblue"><strong>Here are the top-20 movies that you'll most probably like:</strong></font></h1>
-            <p>{{ table }}</p>
+            <h1><font color="midnightblue"><strong>You'd probably like these :</strong></font></h1>
+            <div class="container-fluid">
+                <div class="jumbotron" style="background-color: aqua;">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <p>{{ table }}</p>
+                        </div>
+                        <div class="col-xs-8" id="container">
+                            <img src="{{url_for('static', filename='recommpic.jpg')}}" />
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            
         {% endblock %}
+        <script type="text/javascript">
+            (function() {
+            var img = document.getElementById('container').firstChild;
+            img.onload = function() {
+                if(img.height > img.width) {
+                    img.height = '100%';
+                    img.width = 'auto';
+                }
+            };
+            
+            }());
+        </script>
     </body>
 </html>
+
+
