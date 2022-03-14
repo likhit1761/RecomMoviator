@@ -4,15 +4,17 @@
         <html lang="en" dir="ltr">
         <meta charset="utf-8">
         <style type="text/css">
-
+		
 	      body
 	      {
 			border: 2px solid black;
 	   		padding: 2500;
 	   		margin: 0;
-	    	background: url("https://cdn.hipwallpaper.com/i/90/8/7Sc3Gz.jpg");
-	    	background-repeat: no-repeat;
-	    	background-size: 100%;	      }
+			background-image: url("{{ url_for('static', filename='facepic.jpg') }}");
+	    	/* background: url("https://external-preview.redd.it/Z-mdOCdgw53wluJKQdklW2-WwJEcd3zXoER3YNl-euI.jpg?auto=webp&s=9da2a0406734c547c7bc489c5fa20b091c7ee86c"); */
+	    	background-repeat : no-repeat;
+	    	background-size : 100%;	    
+		}
 
 	      h1
 	      {
@@ -37,30 +39,30 @@
 
 	      .lead
 	      {
-	        background-color:rgba(200,255,255,0.7);
+	        background-color:rgba(4, 8, 8, 0.7);
 	        border-radius:50px;
 	        font-family:Sintony, sans-serif;
-
+			color: wheat;
+			font-weight: bolder;
 	      }
 
-        <title>Welcome</title>
+        
 		</style>
     </head>
 
     <body>
         {% extends "template.html" %}
         {% block content %}
-        <h1 style="text-align:center;"><font color="gold"> ** Welcome to the Movie Recommender **</h1>
-
-	        <div id="banner">
-	        <form action="{{ url_for('rating') }}" method="GET">
-
-	     		<p class="lead"><font color="black"><strong>The idea is that you rate several pre-defined genres based on your taste and then<br/> receive a recommendation list containing the movies  that you'll most probably like! <br/><br/><font color="navy">Press Go when you are ready!</strong></p>
-	     		<button type="submit" class="btn btn-success"><font color="navy"><strong>Go!</strong></button>
-	   		</form>
-	   		</div>
-	   		<div>
-	   			<h6><br><br><br><br><br><font color="hotpink" face=verdana>Programming Machine Learning Applications<br>© DePaul University</h6></div>
+		<div class="container">
+			<h1 style="text-align:center; color: gold;" > Our Movie Recommender</h1>
+			<div id="banner">
+				<form action="{{ url_for('rating') }}" method="GET">
+					<p class="lead"><font><strong>You rate your genres<br/>And we recommend a list of movies you probably like! <br/><br/><font color="gold">Press Go when you are ready!</strong></p>
+					<button type="submit" class="btn btn-success"><font color="navy"><strong>Go!</strong></button>
+				</form>
+			</div>
+		</div>
+        <!--  -->
 
         {% endblock %}
 	</body>
